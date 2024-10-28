@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Tasks from './components/Tasks';
 import AddTask from './components/AddTask';
+// import Counter from './components/Counter';
+import Counter_without from './components/Counter_without';
+import Counter_with from './components/Counter_with';
 
 let alist = [
   {
@@ -87,6 +90,8 @@ function App() {
           onToggle={toggleReminder}
        />
       }
+      <Counter_without />
+      {/* <Counter_with /> */}
     </div>
   );
 }
