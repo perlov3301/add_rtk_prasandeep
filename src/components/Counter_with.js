@@ -4,12 +4,8 @@ import { connect } from "react-redux";
 
 const Counter_with = ({ counter, increment, decrement }) => {
     // const [counter, setCounter] = useState(0);
-    // function increment() {
-    //     setCounter(counter=>counter+1);
-    //   }
-    // function decrement() {
-    //     setCounter(counter=>counter-1);
-    //   }
+    // function increment() { setCounter(counter=>counter+1); }
+    // function decrement() { setCounter(counter=>counter-1); }
     return (
       <div>
         <fieldset>
@@ -25,13 +21,16 @@ const Counter_with = ({ counter, increment, decrement }) => {
       </div>
     );// return
 };// const Counter_with
-const mapStateToProps = (state)=> ({
- //  Use 'counter: state.counter.counter' and replace the 
- //above line if you are using combineReducers to ensure 
- //that 'counter' matches the correct key in your store.
-//for export rootReducer=combineReducers:
+const mapStateToProps = (state)=> ({//state.counter for export counterReducer
+ //Use 'counter: state.counter.counter' for combineReducers 
+ // to ensure that 'counter' matches the correct key in your store.
   counter: state.counter.counter//combineReducers
-//state.counter for export counterReducer
 });
-
-export default Counter_with;
+const mapDispatchToProps= (dispatch) => ({
+   increment: () => dispatch({ type: "INCREMENT" }),
+   decrement: () => dispatch({ type: "DECREMENT" })
+});
+//export default Counter_with;
+export default connect(mapStateToProps, 
+                       mapDispatchToProps
+  )(Counter);
